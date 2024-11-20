@@ -1,0 +1,65 @@
+<h1 mat-dialog-title>Producto</h1>
+
+<mat-dialog-content>
+  <form [formGroup]="productoForm" (ngSubmit)="onSave()">
+    
+    <!-- Nombre del producto -->
+    <mat-form-field class="full-width" appearance="outline">
+      <mat-label>Nombre del producto</mat-label>
+      <input type="text" matInput formControlName="descripcion">
+      <mat-error *ngIf="productoForm.get('descripcion')?.invalid">
+        {{ baseForm.getErrorMessage(productoForm.get('descripcion')) }}
+      </mat-error>
+    </mat-form-field>
+
+    <!-- Precio -->
+    <mat-form-field class="full-width" appearance="outline">
+      <mat-label>Precio</mat-label>
+      <input type="number" matInput formControlName="precio">
+      <mat-error *ngIf="productoForm.get('precio')?.invalid">
+        {{ baseForm.getErrorMessage(productoForm.get('precio')) }}
+      </mat-error>
+    </mat-form-field>
+
+    <!-- Cantidad -->
+    <mat-form-field class="full-width" appearance="outline">
+      <mat-label>Cantidad</mat-label>
+      <input type="number" matInput formControlName="cantidad">
+      <mat-error *ngIf="productoForm.get('cantidad')?.invalid">
+        {{ baseForm.getErrorMessage(productoForm.get('cantidad')) }}
+      </mat-error>
+    </mat-form-field>
+
+    <!-- Categoría -->
+    <mat-form-field class="full-width" appearance="outline">
+      <mat-label>Categoría</mat-label>
+      <mat-select formControlName="cveCategoria">
+        <mat-option *ngFor="let categoria of categoria" [value]="categoria.cveCategoria">
+          {{ categoria.descripcion + '-' + categoria.cveCategoria }}
+        </mat-option>
+      </mat-select>
+      <mat-error *ngIf="productoForm.get('cveCategoria')?.invalid">
+        {{ baseForm.getErrorMessage(productoForm.get('cveCategoria')) }}
+      </mat-error>
+    </mat-form-field>
+
+    <div align="center">
+      <!-- Botón Guardar/Actualizar -->
+      <button type="submit" mat-flat-button color="primary" class="me-2" [disabled]="productoForm.invalid">
+        {{ titleButton }}
+      </button>
+
+      <!-- Botón Limpiar -->
+      <button type="button" mat-flat-button color="warn" >
+        Limpiar
+      </button>
+    </div>
+
+  </form>
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close>
+    Cerrar
+  </button>
+</mat-dialog-actions>

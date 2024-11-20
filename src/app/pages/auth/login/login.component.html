@@ -1,0 +1,37 @@
+<div class="container">
+    <div class="row align-items-center justify-content-center h-100">
+        <div class="col-md-6">
+            <mat-card>
+                <mat-card-title class="m-4">Inicio de Sesión</mat-card-title>
+                <mat-card-content>
+                    <form [formGroup]="loginForm"(submit)="onLogin()">
+                        <mat-form-field class="full-width">
+                            <mat-label>Usuario</mat-label>
+                            <input type="text" matInput formControlName="username">
+                            <mat-error>
+                                {{baseForm.getErrorMessage(loginForm.get('username'))}}
+                            </mat-error>
+                        </mat-form-field>
+
+                        <mat-form-field class="full-width">
+                            <mat-label>Contraseña</mat-label>
+                            <input [type]="hide ? 'password' : 'text'" matInput formControlName="password">
+                            <button type="button" mat-icon-button matSuffix (click)="hide = !hide">
+                                <mat-icon>{{ hide ? 'visibility_of': 'visibility' }}</mat-icon>
+                            </button>
+                            <mat-error>
+                                {{baseForm.getErrorMessage(loginForm.get('password'))}}
+                            </mat-error>
+                        </mat-form-field>
+
+                        <div class="row">
+                            <div class="col text-center">
+                                <button mat-flat-button color="primary"[disabled]="loginForm.invalid">Iniciar Sesión</button>
+                            </div>
+                        </div>
+                    </form>
+                </mat-card-content>
+            </mat-card>
+        </div>
+    </div>
+</div>

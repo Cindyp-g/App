@@ -1,0 +1,72 @@
+<h1 mat-dialog-title>Usuario</h1>
+<mat-dialog-content>
+    <form [formGroup]="userForm" (submit)="onSave()">
+        <mat-form-field class="full-width" appearance="outline">
+            <mat-label>Nombre</mat-label>
+            <input type="text" matInput formControlName="nombre">
+            <mat-error>
+                {{baseForm.getErrorMessage(userForm.get('nombre'))}}
+            </mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="full-width" appearance="outline">
+            <mat-label>Apellidos</mat-label>
+            <input type="text" matInput formControlName="apellidos">
+            <mat-error>
+                {{baseForm.getErrorMessage(userForm.get('apellidos'))}}
+            </mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="full-width" appearance="outline">
+            <mat-label>Nombre Usuario</mat-label>
+            <input type="text" matInput formControlName="username">
+            <mat-error>
+                {{baseForm.getErrorMessage(userForm.get('username'))}}
+            </mat-error>
+        </mat-form-field>
+
+        <mat-form-field *ngIf="actionTODO == 'new'" class="full-width" appearance="outline">
+            <mat-label>Contraseña</mat-label>
+            <input type="password" matInput formControlName="password">
+            <mat-error>
+                {{baseForm.getErrorMessage(userForm.get('password'))}}
+            </mat-error>
+        </mat-form-field>
+
+        <mat-form-field *ngIf="actionTODO == 'new'" class="full-width" appearance="outline">
+            <mat-label>Confirmar Contraseña</mat-label>
+            <input type="password" matInput formControlName="confirmPassword">
+            <mat-error>
+                {{baseForm.getErrorMessage(userForm.get('confirmPassword'))}}
+            </mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="full-width" appearance="outline">
+            <mat-label>Rol</mat-label>
+            <mat-select formControlName="cveRol">
+               <mat-option *ngFor="let rol of roles" [value]="rol.cveRol">
+                {{rol.descripcion + '-' + rol.clave}}
+               </mat-option>
+            </mat-select>
+            <mat-error>
+                {{baseForm.getErrorMessage(userForm.get('cveRol'))}}
+            </mat-error>
+        </mat-form-field>
+
+            <div align="center">
+                <button type="submit" mat-flat-button color="primary" class="me-2" [disabled]="userForm.invalid">
+                {{titleButton}}
+                </button>
+
+                <button type="button" mat-flat-button color="warn">
+                    Limpiar
+                </button>
+            </div>
+
+    </form>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+    <button mat-button mat-dialog-close>
+        Cerrar
+    </button>
+</mat-dialog-actions>

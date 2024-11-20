@@ -1,0 +1,27 @@
+<h1 mat-dialog-title>Categorias</h1>
+<mat-dialog-content>
+    <form [formGroup]="categoriaForm" (submit)="onSave()">
+        <mat-form-field class="full-width" appearance="outline">
+            <mat-label>Nombre de la categoria</mat-label>
+            <input type="text" matInput formControlName="descripcion">
+            <mat-error>
+                {{baseForm.getErrorMessage(categoriaForm.get('descripcion'))}}
+            </mat-error>
+        </mat-form-field>
+
+            <div align="center">
+                <button type="submit" mat-flat-button color="primary" class="me-2" [disabled]="categoriaForm.invalid">
+                {{titleButton}}
+                </button>
+
+                <button type="button" mat-flat-button color="warn" >
+                    Limpiar
+                </button>
+            </div>
+    </form>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+    <button mat-button mat-dialog-close>
+        Cerrar
+    </button>
+</mat-dialog-actions>

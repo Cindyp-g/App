@@ -1,0 +1,9 @@
+<mat-toolbar color="primary">menu</mat-toolbar>
+<mat-nav-list>
+<div *ngFor="let menu of menus">
+    <a [routerLink]="menu.route" mat-list-item>
+        <mat-icon class="me-2">{{menu.icon}}</mat-icon>
+        <span>{{menu.name}}</span>
+    </a>
+</div>
+</mat-nav-list> 

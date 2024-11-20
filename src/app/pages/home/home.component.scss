@@ -1,0 +1,57 @@
+#hero {
+    width: 100&;
+    height: 100vb;
+    background-color: darkgrey;
+    overflow: hidden;
+    position: relative;
+}
+
+#hero .carousel,
+#hero .carousel-inner,
+#hero .carousel-item,
+#hero .carousel-item::before {
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+}
+
+#hero .carousel-item {
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+#hero-carousel-item:before {
+    content: "";
+    background-color: cadetblue;
+}
+
+#hero .carousel-container {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    position: absolute;
+    bottom: 0;
+    top: 70px;
+    left: 70px;
+    right: 50px;
+}
+
+#hero .container {
+    text-align: center;
+}
+
+#hero h2 {
+    color: white;
+}
+
+#hero p {
+    color: white;
+}
+
+p{
+    text-align: justify;
+    margin: 5px;
+}
