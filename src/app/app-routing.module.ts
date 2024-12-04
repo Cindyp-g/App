@@ -18,7 +18,8 @@ const routes: Routes = [
   },
   { path: 'login', loadChildren: () => import('./pages/auth/login/login.module').then(m => m.LoginModule),
     canActivate:[checkLoginGuard]
-   }
+   },
+  { path: 'ventas', loadChildren: () => import('./pages/ventas/ventas.module').then(m => m.VentasModule) }
 
 ];
 

@@ -83,7 +83,7 @@ export class CategoriaDialogComponent {
           .pipe(takeUntil(this.destroy$))
           .subscribe((user)=>{
             this.dialogRef.close(user);
-          });
+          }); 
       }
     }
 

@@ -50,6 +50,9 @@ export class CategoriasComponent implements OnInit, AfterViewInit, OnDestroy {
         .pipe(takeUntil(this.destroy$))
         .subscribe(() => {
           this.listar(); 
+          this.snackbar.open("El estatus se cambio correctamente", '', {
+            duration: 3000
+          });
         });
     } else {
       console.error(" No se puede cambiar el estatus.");
@@ -90,9 +93,10 @@ export class CategoriasComponent implements OnInit, AfterViewInit, OnDestroy {
       }
     }).then((result) => {
       if (result.isConfirmed) {
+        console.log(cveCategoria)
         this.categoriaSvc.eliminarCategorias(cveCategoria)
           .pipe(takeUntil(this.destroy$))
-          .subscribe(() => {
+          .subscribe((categoria) => {
             this.listar();
             this.snackbar.open("Los datos se eliminaron correctamente", '', {
               duration: 3000

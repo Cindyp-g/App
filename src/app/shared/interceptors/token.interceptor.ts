@@ -3,7 +3,6 @@ import { inject } from '@angular/core';
 import { AuthService } from '../../pages/auth/services/auth.service';
 
 export const tokenInterceptor: HttpInterceptorFn = (req, next) => {
-  console.log("Entra");
   if(req.headers.get('requireToken')){
     const authSvc = inject(AuthService);
     const token = authSvc.tokenValue;

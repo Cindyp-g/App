@@ -21,7 +21,7 @@ export class ProductosService {
 
   // Cambiar estatus de un producto
   cambiarEstatus(cveProducto: number, estatus: boolean): Observable<any> {
-    return this.http.patch<any>(`${environment.API_URL}/producto/${cveProducto}`, { estatus }, { headers: { "requireToken": "true" } })
+    return this.http.patch<any>(`${environment.API_URL}/producto/${cveProducto}/${ estatus }`, { headers: { "requireToken": "true" } })
       .pipe(catchError((error) => this.handlerError(error)));
   }
 
@@ -38,7 +38,7 @@ export class ProductosService {
   }
 
   // Eliminar producto
-  eliminarProductos(cveProducto: number): Observable<Producto> {
+  eliminarProductos(cveProducto: number){
     return this.http.delete<Producto>(`${environment.API_URL}/producto/${cveProducto}`, { headers: { "requireToken": "true" } })
       .pipe(catchError((error) => this.handlerError(error)));
   }
@@ -48,9 +48,7 @@ export class ProductosService {
     return this.http.get<Categoria[]>(`${environment.API_URL}/categoria`, { headers: { "requireToken": "true" } })
       .pipe(catchError((error) => this.handlerError(error)));
   }
-
-  // errores
-  private handlerError(error: any): Observable<never> {
+  private handlerError(error: any) {
     let message = "Ocurrió un error";
     if (error.error?.message) message = error.error.message;
 
@@ -59,9 +57,6 @@ export class ProductosService {
       verticalPosition: 'top',
       horizontalPosition: 'end'
     });
-
-    
-    console.error("Error en el servicio:", error);
 
     return throwError(() => new Error(message));
   }

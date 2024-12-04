@@ -42,14 +42,17 @@ export class ProductosComponent {
   }
 
   cambiarEstatus(producto: any) {
-    const { cveProducto, activo } = producto;
+    const { cveProducto, estatus } = producto;
     if (cveProducto !== undefined) {
-      const nuevoEstatus = !activo; 
+      const nuevoEstatus = !estatus; 
   
       this.productoSvc.cambiarEstatus(cveProducto, nuevoEstatus)
         .pipe(takeUntil(this.destroy$))
         .subscribe(() => {
           this.listar(); 
+          this.snackbar.open("El estatus se cambio correctamente", '', {
+            duration: 3000
+          });
         });
     } else {
       console.error(" No se puede cambiar el estatus.");
@@ -92,7 +95,7 @@ export class ProductosComponent {
       if (result.isConfirmed) {
         this.productoSvc.eliminarProductos(cveProducto)
           .pipe(takeUntil(this.destroy$))
-          .subscribe(() => {
+          .subscribe((producto) => {
             this.listar();
             this.snackbar.open("Los datos se eliminaron correctamente", '', {
               duration: 3000

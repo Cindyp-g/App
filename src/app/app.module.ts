@@ -14,6 +14,9 @@ import { UsuarioDialogComponent } from './pages/admin/usuarios/components/usuari
 import { tokenInterceptor } from './shared/interceptors/token.interceptor';
 import { CategoriaDialogComponent } from './pages/admin/categorias/components/categoria-dialog/categoria-dialog.component';
 
+
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -21,13 +24,14 @@ import { CategoriaDialogComponent } from './pages/admin/categorias/components/ca
     FooterComponent,
     SidebarComponent,
     UsuarioDialogComponent,
-    CategoriaDialogComponent
+    CategoriaDialogComponent,
+
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     MaterialModule,
-    MatCardModule
+    MatCardModule,
   ],
   providers: [
     provideClientHydration(),
